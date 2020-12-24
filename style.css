@@ -1,0 +1,13 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+
+/*box group area*/
+
+canvas {
+    background: #eee;
+    display: block;
+    margin: 0, auto;
+}
