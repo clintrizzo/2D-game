@@ -49,3 +49,17 @@ ctx.rect(386, 2, 84, 20);
 ctx.fillStyle = "#ff0000";
 ctx.fill();
 ctx.closePath();
+
+
+//code for the ball
+var x = canvas.width / 2;
+var y = canvas.height - 30;
+
+function draw() {
+    ctx.beginPath();
+    ctx.arc(x, y, 10, 0, Math.PI * 2);
+    ctx.fillStyle = "#0095dd";
+    ctx.fill();
+    ctx.closePath();
+}
+setInterval(draw, 10);
