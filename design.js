@@ -1,11 +1,11 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-
+var ballRadius = 10;
 //code for the ball
 
 var x = canvas.width / 2;
 var y = canvas.height - 30;
-var dx = 2;
+var dx = 0;
 var dy = -2;
 
 function drawBall() {
@@ -14,6 +14,10 @@ function drawBall() {
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+    if (y + dy > canvas.height || y + dy < 0) {
+        dy = -dy;
+    }
 }
 
 function draw() {
@@ -22,5 +26,6 @@ function draw() {
     x += dx;
     y += dy;
 }
+
 
 setInterval(draw, 10);
