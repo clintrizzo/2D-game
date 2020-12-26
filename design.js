@@ -10,22 +10,45 @@ var dy = -2;
 
 //paddle variables
 var paddleHeight = 10;
-var paddleWidth = 70;
+var paddleWidth = 75;
 var paddleX = (canvas.width - paddleWidth) / 2;
+
+//controls
+var rightPressed = false;
+var leftPressed = false;
+
+//event listener to move the paddle
+document.addEventListener("keydown", keyDownHandler, false);
+document.addEventListener("keyup", keyUpHandler, false);
+
+function keyDownHandler(e) {
+    if (e.key == "right" || e.key == "ArrowRight") {
+        rightPressed = true;
+    } else if (e.key == "left" || e.key == "ArrowLeft") {
+        leftPressed = true;
+    }
+}
+
+function keyUpHandler(e) {
+    if (e.key == "Right" || e.key == "ArrowRight") {
+        rightPressed = false;
+    } else if (e.key == "Left" || e.key == "ArrowLeft") {
+        leftPressed = false;
+    }
+}
 
 function drawBall() {
     ctx.beginPath();
-    ctx.arc(x, y, 10, 0, Math.PI * 2);
+    ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
     ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
-    ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
 }
 
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = "#grey";
+    ctx.fillStyle = "#0095DD";
     ctx.fill();
     ctx.closePath();
 }
@@ -33,18 +56,29 @@ function drawPaddle() {
 function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBall();
-    x += dx;
-    y += dy;
-    if (y + dy > canvas.height || y + dy < 0) { //ball to bounce off the top and the bottom of the edges
-        dy = -dy;
-    }
+    drawPaddle();
+
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
         dx = -dx;
     }
     if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
-        dy = -dy
+        dy = -dy;
     }
-}
 
+    if (rightPressed) {
+        paddleX += 7;
+        if (paddleX + paddleWidth > canvas.width) {
+            paddleX = canvas.width - paddleWidth;
+        }
+    } else if (leftPressed) {
+        paddleX -= 7;
+        if (paddleX < 0) {
+            paddleX = 0;
+        }
+    }
+
+    x += dx;
+    y += dy;
+}
 
 setInterval(draw, 10);
