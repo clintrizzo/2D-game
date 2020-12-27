@@ -61,24 +61,27 @@ function draw() {
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
         dx = -dx;
     }
-    if (y + dy > canvas.height - ballRadius || y + dy < ballRadius) {
+    //getting the game to end when hitting the bottom of the board
+    if (y + dy < ballRadius) {
         dy = -dy;
+    } else if (y + dy > canvas.height - ballRadius) {
+        if (x > paddleX && x < paddleX + paddleWidth) {
+            dy = -dy;
+        } else {
+            alert("GAME OVER"); //alert to let the user know the game is over
+            document.location.reload();
+            clearInterval(interval);
+        }
     }
 
-    if (rightPressed) {
+    if (rightPressed && paddleX < canvas.width - paddleWidth) {
         paddleX += 7;
-        if (paddleX + paddleWidth > canvas.width) {
-            paddleX = canvas.width - paddleWidth;
-        }
-    } else if (leftPressed) {
+    } else if (leftPressed && paddleX > 0) {
         paddleX -= 7;
-        if (paddleX < 0) {
-            paddleX = 0;
-        }
     }
 
     x += dx;
     y += dy;
 }
 
-setInterval(draw, 10);
+var interval = setInterval(draw, 10);
