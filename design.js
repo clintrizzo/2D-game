@@ -1,6 +1,6 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var ballRadius = 10;
+var ballRadius = 8;
 
 //code for the ball
 var x = canvas.width / 2;
@@ -28,6 +28,9 @@ var brickOffsetLeft = 25;
 
 //counting the score
 var score = 0;
+
+//setting the lives for the game
+var lives = 3;
 
 //bricks code
 var bricks = [];
@@ -85,6 +88,12 @@ function drawScore() {
     ctx.fillText("Score" + score, 25, 20);
 }
 
+function drawLives() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#c4c7ce";
+    ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
+}
+
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
@@ -127,20 +136,19 @@ function draw() {
     drawBricks();
     collisionDetection();
     drawScore();
-
+    //getting the game to end when hitting the bottom of the board
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
         dx = -dx;
     }
-    //getting the game to end when hitting the bottom of the board
     if (y + dy < ballRadius) {
         dy = -dy;
-    } else if (y + dy > canvas.height - ballRadius) {
+    } else if (y + dy > canvas.height) {
         if (x > paddleX && x < paddleX + paddleWidth) {
             dy = -dy;
         } else {
-            alert("GAME OVER"); //alert to let the user know the game is over
+            alert("GAME OVER");
             document.location.reload();
-            clearInterval(interval);
+            clearInterval(interval); // Needed for Chrome to end game
         }
     }
 
