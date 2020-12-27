@@ -1,21 +1,21 @@
 html {
     padding: 0;
     margin: 0;
-    background-image: url("https://myyoungworldblog.files.wordpress.com/2019/11/space-signals-3246.jpg?w=1024");
+    background-image: url("https://education.abc.net.au/splash-image-servlet/mvcservlet/imageServlet/profile1/parent-2541848");
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 h1 {
-    font-family: fantasy;
-    background: -webkit-linear-gradient(grey, silver);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: -webkit-linear-gradient(grey, white);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-h4 {
-    font-family: fantasy;
-    background: -webkit-linear-gradient(grey, silver);
+h2 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: -webkit-linear-gradient(grey, white);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
