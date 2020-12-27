@@ -5,12 +5,12 @@ var ballRadius = 10;
 //code for the ball
 var x = canvas.width / 2;
 var y = canvas.height - 30;
-var dx = 2;
+var dx = 4;
 var dy = -2;
 
 //paddle variables
 var paddleHeight = 10;
-var paddleWidth = 75;
+var paddleWidth = 85;
 var paddleX = (canvas.width - paddleWidth) / 2;
 
 //controls
@@ -19,12 +19,15 @@ var leftPressed = false;
 
 //brick functions
 var brickRowCount = 3;
-var brickColumnCount = 5;
+var brickColumnCount = 7;
 var brickWidth = 80;
 var brickHeight = 20;
-var brickPadding = 10;
-var brickOffsetTop = 25;
+var brickPadding = 13;
+var brickOffsetTop = 30;
 var brickOffsetLeft = 25;
+
+//counting the score
+var score = 0;
 
 //bricks code
 var bricks = [];
@@ -64,10 +67,22 @@ function collisionDetection() {
                 if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
                     dy = -dy;
                     b.status = 0;
+                    score++;
+                    if (score == brickRowCount * brickColumnCount) {
+                        alert("You Win, Congratulations!");
+                        document.location.reload();
+                        clearInterval(interval);
+                    }
                 }
             }
         }
     }
+}
+
+function drawScore() {
+    ctx.font = "16px Time News Roman";
+    ctx.fillStyle = "blue";
+    ctx.fillText("Score" + score, 8, 20);
 }
 
 function drawBall() {
@@ -111,6 +126,7 @@ function draw() {
     drawPaddle();
     drawBricks();
     collisionDetection();
+    drawScore();
 
     if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
         dx = -dx;
