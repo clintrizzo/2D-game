@@ -80,8 +80,8 @@ function collisionDetection() {
 }
 
 function drawScore() {
-    ctx.font = "16px Time News Roman";
-    ctx.fillStyle = "white"
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#c4c7ce;"
     ctx.fillText("Score" + score, 25, 20);
 }
 
