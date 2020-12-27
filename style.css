@@ -26,5 +26,9 @@ h4 {
 canvas {
     display: block;
     margin: 0, auto;
+    padding: 3px;
     display: block;
+    border: 5px;
+    border-style: ridge;
+    border-color: silver;
 }
