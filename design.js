@@ -60,9 +60,11 @@ function collisionDetection() {
     for (var c = 0; c < brickColumnCount; c++) {
         for (var r = 0; r < brickRowCount; r++) {
             var b = bricks[c][r];
-            if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
-                dy = -dy;
-                b.status = 0;
+            if (b.status == 1) {
+                if (x > b.x && x < b.x + brickWidth && y > b.y && y < b.y + brickHeight) {
+                    dy = -dy;
+                    b.status = 0;
+                }
             }
         }
     }
@@ -87,15 +89,18 @@ function drawPaddle() {
 function drawBricks() {
     for (var c = 0; c < brickColumnCount; c++) {
         for (var r = 0; r < brickRowCount; r++) {
-            var brickX = (c * (brickWidth + brickPadding)) + brickOffsetLeft;
-            var brickY = (r * (brickHeight + brickPadding)) + brickOffsetTop;
-            bricks[c][r].x = brickX;
-            bricks[c][r].y = brickY;
-            ctx.beginPath();
-            ctx.rect(brickX, brickY, brickWidth, brickHeight);
-            ctx.fillStyle = "#blue";
-            ctx.fill();
-            ctx.closePath();
+            if (bricks[c][r].status == 1) {
+                var brickX = (c * (brickWidth + brickPadding)) + brickOffsetLeft;
+                var brickY = (r * (brickHeight + brickPadding)) + brickOffsetTop;
+                bricks[c][r].x = brickX;
+                bricks[c][r].y = brickY;
+                ctx.beginPath();
+                ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                ctx.fillStyle = "#blue";
+                ctx.fill();
+                ctx.closePath();
+            }
+
         }
     }
 }
