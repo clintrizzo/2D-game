@@ -81,14 +81,14 @@ function collisionDetection() {
 
 function drawScore() {
     ctx.font = "16px Time News Roman";
-    ctx.fillStyle = "blue";
-    ctx.fillText("Score" + score, 8, 20);
+    ctx.fillStyle = "white"
+    ctx.fillText("Score" + score, 25, 20);
 }
 
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "#c4c7ce";
     ctx.fill();
     ctx.closePath();
 }
@@ -96,7 +96,7 @@ function drawBall() {
 function drawPaddle() {
     ctx.beginPath();
     ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
-    ctx.fillStyle = "#0095DD";
+    ctx.fillStyle = "#c4c7ce";
     ctx.fill();
     ctx.closePath();
 }
