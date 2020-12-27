@@ -1,13 +1,29 @@
 html {
     padding: 0;
     margin: 0;
+    background-image: url("https://myyoungworldblog.files.wordpress.com/2019/11/space-signals-3246.jpg?w=1024");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1 {
+    font-family: fantasy;
+    background: -webkit-linear-gradient(grey, silver);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h4 {
+    font-family: fantasy;
+    background: -webkit-linear-gradient(grey, silver);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 
 /*box group area*/
 
 canvas {
-    background-image: url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/andromeda-galaxy-royalty-free-image-1585682435.jpg?resize=980:*");
     display: block;
     margin: 0, auto;
     display: block;
